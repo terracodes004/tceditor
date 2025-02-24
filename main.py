@@ -157,6 +157,10 @@ class CodeEditor:
                         background="black", 
                         foreground="white",
                         bordercolor="#444")
+        self.s.configure('e.Treeview', 
+                background="black", 
+                foreground="white",
+                bordercolor="#444")
 
         # 2. Create layout (critical for ttk.PanedWindow)
         self.s.layout('e.TPanedWindow', [
@@ -177,7 +181,12 @@ class CodeEditor:
         self.paned_windo.add(self.paned_wind, weight=1)
         self.paned_windo.add(self.paned_window, weight=44)
         self.file = ttk.Treeview(self.paned_window, padding="2")
-        self.file.configure
+        self.file = ttk.Treeview(
+    self.root,
+    style="e.Treeview"
+)
+        # For default tree column (hidden)
+
         
         self.paned_window.add(self.file, weight=1)
         img = PhotoImage(file="logo.png")
@@ -207,7 +216,7 @@ class CodeEditor:
             'comment': r'#.*$'
         }
         # Text area with line numbers
-        self.text_area = Text(self.roo,undo=True, wrap="none", background="dimgray", font=("Bookman Old Style", 12))
+        self.text_area = Text(self.roo,undo=True, wrap="none",fg="white", background="black", font=("Bookman Old Style", 12))
         self.text_area.insert(END, """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -603,7 +612,7 @@ class CodeEditor:
         self.roo2 = Frame(self.note, width=12)
         self.note.add(self.roo2, text="Untitled")
         """Clear the text area for a new file."""
-        self.text_area2 = Text(self.roo2,undo=True, wrap="none", background="dimgray", font=("Bookman Old Style", 12))
+        self.text_area2 = Text(self.roo2,undo=True, wrap="none",fg="white", background="black", font=("Bookman Old Style", 12))
         text.append(self.text_area2)
         self.text_area2.insert(END, """<!DOCTYPE html>
 <html lang="en">
@@ -663,7 +672,7 @@ class CodeEditor:
                     self.roo2 = Frame(self.note)
                     self.note.add(self.roo2, text=file_pat[len(file_pat)-1])
 
-                    self.text_area2 = Text(self.roo2,undo=True, wrap="none", background="dimgray", font=("Bookman Old Style", 12))
+                    self.text_area2 = Text(self.roo2,undo=True, wrap="none", fg="white", background="black", font=("Bookman Old Style", 12))
 
                     self.text_area2.insert(END, file.read())
                     self.text_area2.pack(fill="both", expand=True)
@@ -677,7 +686,7 @@ class CodeEditor:
                     self.roo2 = Frame(self.note)
                     self.note.add(self.roo2, text=file_path)
 
-                    self.text_area2 = Text(self.roo2,undo=True, wrap="none", background="dimgray", font=("Bookman Old Style", 12))
+                    self.text_area2 = Text(self.roo2,undo=True, wrap="none", fg="white", background="black", font=("Bookman Old Style", 12))
 
                     self.text_area2.insert(END, file.read())
                     self.text_area2.pack(fill="both", expand=True)
